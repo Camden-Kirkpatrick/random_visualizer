@@ -144,11 +144,3 @@ bool updateGame()
 
 	return true;
 }
-
-// Called on shutdown — writes a marker to a file so we can confirm clean exit.
-void closeGame()
-{
-	std::ofstream f(RESOURCES_PATH "f.txt");
-	f << "CLOSED\n";
-	f.close();
-}

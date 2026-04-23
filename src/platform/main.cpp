@@ -16,7 +16,7 @@ int main()
 
 	// --- Window and raylib setup ---
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-	InitWindow(WIN_WIDTH, WIN_HEIGHT, "game");
+	InitWindow(WIN_WIDTH, WIN_HEIGHT, "random_visualizer");
 	SetTargetFPS(FPS);
 
 #pragma region imgui
@@ -28,8 +28,6 @@ int main()
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.FontGlobalScale = 2;
 
-	// Change the style/theme
-	//ImGui::StyleColorsClassic();
 	ImGui::SetupImGuiCatppuccinMochaStyle();
 #pragma endregion
 
@@ -101,15 +99,6 @@ int main()
 
 		ImGui::Separator();
 
-		// Cell size control — bigger cells = fewer, chunkier rectangles.
-		// Pressing enter triggers a resize of the matrix and a regeneration.
-		//if (ImGui::InputScalar("Cell size", ImGuiDataType_U32, &cellSize, nullptr, nullptr, nullptr, ImGuiInputTextFlags_EnterReturnsTrue))
-		//{
-		//	if (cellSize < 1) cellSize = 1;
-		//	resize();
-		//	initGame();
-		//}
-
 		static uint32_t minSize = 1;
 		static uint32_t maxSize = 100;
 		if (ImGui::SliderScalar("Cell size", ImGuiDataType_U32, &cellSize, &minSize, &maxSize))
@@ -118,7 +107,6 @@ int main()
 			resize();
 			initGame();
 		}
-
 
 		ImGui::Separator();
 
@@ -186,8 +174,6 @@ int main()
 #pragma endregion
 
 	CloseWindow();
-
-	closeGame(); // Write shutdown marker to file
 
 	return 0;
 }

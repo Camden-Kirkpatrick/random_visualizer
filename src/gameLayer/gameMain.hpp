@@ -18,7 +18,6 @@ extern float colorPercentage;
 
 bool initGame();
 bool updateGame();
-void closeGame();
 void setState(uint32_t seed);
 void setColors(Color c0, Color c1);
 void resize();
