@@ -7,7 +7,7 @@
 // --- Runtime settings controlled by the ImGui menu ---
 bool animate = false;             // Whether the grid re-randomizes itself over time
 int frameCount = 0;               // Counts frames since last regeneration (for animation timing)
-uint16_t frameInterval = 60;      // Regenerate every N frames when animating
+uint16_t frameInterval = 30;      // Regenerate every N frames when animating
 int generatorSelection = 1;       // 1 = good RNG, 2 = bad RNG, 3 = probability-based
 uint32_t cellSize = 10;           // Size of each cell in pixels
 uint32_t extractBit = 8;          // Which bit to extract from the bad RNG's output
