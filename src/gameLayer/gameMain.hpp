@@ -4,7 +4,7 @@
 
 #define WIN_WIDTH 1920
 #define WIN_HEIGHT 1080
-#define FPS 240
+#define FPS 60
 
 extern bool animate;
 extern int frameCount;

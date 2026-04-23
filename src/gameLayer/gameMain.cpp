@@ -139,6 +139,9 @@ bool updateGame()
 	if (frameCount % frameInterval == 0)
 		frameCount = 0;
 	frameCount++;
+
+	DrawText(TextFormat("%i FPS", GetFPS()), 0, 0, 30, RED);
+
 	return true;
 }
 

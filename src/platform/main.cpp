@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <imgui.h>
 #include <rlImGui.h>
-#include <cstdint>
+#include <cstdint> 
 #include "imguiThemes.hpp"
 #include "gameMain.hpp"
 
@@ -102,10 +102,10 @@ int main()
 		ImGui::Separator();
 
 		// Cell size control — bigger cells = fewer, chunkier rectangles.
-		// Changing it triggers a resize of the matrix and a regeneration.
-		if (ImGui::InputScalar("Cell size", ImGuiDataType_U32, &cellSize))
+		// Pressing enter triggers a resize of the matrix and a regeneration.
+		if (ImGui::InputScalar("Cell size", ImGuiDataType_U32, &cellSize, nullptr, nullptr, nullptr, ImGuiInputTextFlags_EnterReturnsTrue))
 		{
-			if (cellSize < 1) cellSize = 1; // Avoid division by zero in resize()
+			if (cellSize < 1) cellSize = 1;
 			resize();
 			initGame();
 		}
@@ -142,7 +142,8 @@ int main()
 		// One-click return to the initial defaults
 		if (ImGui::Button("Reset All"))
 		{
-			setState(42);
+			seed = 42;
+			setState(seed);
 			setColors(WHITE, BLACK);
 			cellSize = 10;
 			frameInterval = 60;
