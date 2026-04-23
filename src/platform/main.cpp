@@ -103,7 +103,16 @@ int main()
 
 		// Cell size control — bigger cells = fewer, chunkier rectangles.
 		// Pressing enter triggers a resize of the matrix and a regeneration.
-		if (ImGui::InputScalar("Cell size", ImGuiDataType_U32, &cellSize, nullptr, nullptr, nullptr, ImGuiInputTextFlags_EnterReturnsTrue))
+		//if (ImGui::InputScalar("Cell size", ImGuiDataType_U32, &cellSize, nullptr, nullptr, nullptr, ImGuiInputTextFlags_EnterReturnsTrue))
+		//{
+		//	if (cellSize < 1) cellSize = 1;
+		//	resize();
+		//	initGame();
+		//}
+
+		static uint32_t minSize = 1;
+		static uint32_t maxSize = 100;
+		if (ImGui::SliderScalar("Cell size", ImGuiDataType_U32, &cellSize, &minSize, &maxSize))
 		{
 			if (cellSize < 1) cellSize = 1;
 			resize();
@@ -117,9 +126,9 @@ int main()
 		ImGui::Checkbox("Animate", &animate);
 
 		// How many frames between each animation update (lower = faster animation)
-		static uint16_t min = 1;
-		static uint16_t max = 500;
-		ImGui::SliderScalar("Interval in frames", ImGuiDataType_U16, &frameInterval, &min, &max);
+		static uint16_t minInterval = 1;
+		static uint16_t maxInterval = 240;
+		ImGui::SliderScalar("Interval in frames", ImGuiDataType_U16, &frameInterval, &minInterval, &maxInterval);
 		if (frameInterval < 1) frameInterval = 1; // Guard against division by zero
 
 		ImGui::Separator();
@@ -146,7 +155,7 @@ int main()
 			setState(seed);
 			setColors(WHITE, BLACK);
 			cellSize = 10;
-			frameInterval = 60;
+			frameInterval = 30;
 			animate = false;
 			generatorSelection = 1;
 			colorPercentage = 0.5f;
