@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 #basically this will change the RESOURCES_PATH to be the local path
 #! ! ! ! ! ! !
 #delete the out folder after changing if visual studio doesn recognize the change
-set(PRODUCTION_BUILD ON CACHE BOOL "Make this a production build" FORCE)
+set(PRODUCTION_BUILD OFF CACHE BOOL "Make this a production build" FORCE)
 
 if(MSVC) 
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
